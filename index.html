@@ -1,0 +1,746 @@
+<html lang="pt-BR" class="scroll-smooth"><head>
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETERNA // O CÓDIGO DIVINO</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&amp;family=Montserrat:wght@200;300;400&amp;display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,100,0,0" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'void': '#000000',
+                        'obsidian': '#050505',
+                        'gold-dark': '#8E6E30',
+                        'gold-light': '#F9E29C',
+                        'gold-mid': '#C49845',
+                        'marble': '#F5F5F5',
+                    },
+                    fontFamily: {
+                        'sacred': ['Cinzel', 'serif'],
+                        'elegant': ['Playfair Display', 'serif'],
+                        'prose': ['Cormorant Garamond', 'serif'],
+                        'tech': ['Montserrat', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        'widest-xl': '0.3em',
+                        'widest-xxl': '0.5em',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1.5s ease-out forwards',
+                        'slide-up': 'slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shimmer': 'shimmer 3s linear infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(100px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200%' },
+                            '100%': { backgroundPosition: '200%' },
+                        }
+                    }
+                }
+            }
+        }
+
+        
+    </script>
+
+    <style>
+        /* BASE SETTINGS */
+        body {
+            background-color: #000000;
+            color: #F5F5F5;
+            cursor: none; /* Custom Cursor */
+            overflow-x: hidden;
+        }
+
+        /* GOLD METALLIC TEXT EFFECT */
+        .text-gold {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shimmer 5s linear infinite;
+        }
+        
+        .border-gold-gradient {
+            border-image: linear-gradient(to right, #BF953F, #FCF6BA, #B38728) 1;
+        }
+
+        /* CUSTOM CURSOR */
+        #cursor-dot {
+            position: fixed;
+            width: 8px; height: 8px;
+            background-color: #F9E29C;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+        }
+        #cursor-circle {
+            position: fixed;
+            width: 50px; height: 50px;
+            border: 1px solid rgba(249, 226, 156, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, border-color 0.3s;
+        }
+        
+        /* HOVER STATES */
+        .hover-divine:hover ~ #cursor-circle {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(249, 226, 156, 0.1);
+            border-color: #F9E29C;
+        }
+
+        /* GRAIN OVERLAY */
+        /* .grain {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.07'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 50;
+        } */
+
+        /* GLOW EFFECTS */
+        .divine-glow {
+            box-shadow: 0 0 40px rgba(196, 152, 69, 0.2);
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #C49845; }
+
+        /* IMAGE REVEAL */
+        .reveal-image {
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+            transition: clip-path 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .reveal-image.active {
+            clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+        }
+
+
+      .dyn-img-link-wrapper-di-script {
+        anchor-scope: all;
+        display: contents;
+        position: relative;
+        z-index: 1;
+      }
+
+      .dyn-img-link-wrapper-di-script img {
+        anchor-name: --photo;
+        display: block;
+        max-width: 100%;
+      }
+
+      .dyn-img-link-di-script {
+        z-index: 999999;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 9999px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        color: white;
+        height: clamp(13px, calc(max(anchor-size(width), anchor-size(height)) * 0.3), 21px);
+        width: clamp(13px, calc(max(anchor-size(width), anchor-size(height)) * 0.3), 21px);
+        padding: 4px;
+        position: absolute;
+
+        bottom: anchor(bottom);
+        left: anchor(left);
+        margin-left: 10px;
+        margin-bottom: 10px;
+
+        transition: background-color 0.2s ease-in-out;
+      }
+
+      .dyn-img-link-di-script:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .dyn-img-link-di-script span {
+        font-size: 14px;
+        vertical-align: top;
+      }
+
+      .dyn-img-attribution-button-di-script {
+        z-index: 999999;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 9999px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        color: white;
+        width: clamp(13px, calc(max(anchor-size(width), anchor-size(height)) * 0.3), 21px);
+        height: clamp(13px, calc(max(anchor-size(width), anchor-size(height)) * 0.3), 21px);
+        padding: 4px;
+
+        position: absolute;
+        position-anchor: --photo;
+        top: anchor(top);
+        right: anchor(right);
+        margin-top: 10px;
+        margin-right: 10px;
+
+        transition: background-color 0.2s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .dyn-img-attribution-button-di-script:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .dyn-img-attribution-button-di-script span {
+        font-size: 14px;
+        vertical-align: top;
+      }
+
+      .dyn-img-inline-attribution-di-script {
+        z-index: 999999;
+        font-size: 12px;
+        padding: 4px;
+        display: none;
+
+        position: absolute;
+        position-anchor: --photo;
+        bottom: anchor(bottom);
+        right: anchor(right);
+        margin-bottom: 8px;
+        margin-right: 8px;
+
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: right;
+
+        white-space: nowrap;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 9999px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        color: white;
+      }
+      .border-gold-lustre\/30 {
+    border-color: rgb(212 175 55 / 0.3);
+}
+
+    #divine-flashlight {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none; /* Permite clicar nos botões abaixo */
+        z-index: 30; /* Fica acima do conteúdo, mas abaixo do cursor e nav */
+        background: radial-gradient(
+            600px circle at var(--mouse-x) var(--mouse-y),
+            rgba(249, 226, 156, 0.08) 0%,
+            transparent 80%
+        );
+    }
+
+    /* Opcional: Efeito que escurece levemente o site para destacar a luz */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.15);
+        pointer-events: none;
+        z-index: 25;
+    }
+    </style></head>
+<body class="selection:bg-gold-mid selection:text-black">
+    <div id="divine-flashlight"></div>
+    <!-- FX -->
+    <div class="grain"></div>
+    <div id="cursor-dot" style="left: 1078px; top: 103px;"></div>
+    <div id="cursor-circle" style="width: 50px; height: 50px; background-color: transparent; border-color: rgba(249, 226, 156, 0.5);"></div>
+
+    <!-- PRELOADER -->
+    <div id="preloader" class="fixed inset-0 bg-void z-[9999] flex flex-col items-center justify-center transition-opacity duration-1000" style="opacity: 0; display: none;">
+        <div class="relative w-32 h-32 flex items-center justify-center">
+            <div class="absolute inset-0 border border-gold-dark rounded-full animate-[spin_10s_linear_infinite]"></div>
+            <div class="absolute inset-2 border border-gold-mid rounded-full animate-[spin_8s_linear_infinite_reverse] opacity-60"></div>
+            <div class="font-sacred text-4xl text-gold-light animate-pulse">Æ</div>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="fixed top-0 w-full z-40 px-8 py-6 flex justify-between items-center mix-blend-difference">
+        <a href="#" class="font-sacred text-2xl tracking-widest text-white hover-divine relative group">
+            AETERNA
+            <span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-gold-light transition-all duration-700 group-hover:w-full"></span>
+        </a>
+        <div class="hidden md:flex gap-12 font-tech text-[10px] tracking-[0.3em] uppercase">
+            <a href="#philosophy" class="hover:text-gold-light transition-colors duration-300 hover-divine">Philosophia</a>
+            <a href="#services" class="hover:text-gold-light transition-colors duration-300 hover-divine">Opus</a>
+            <a href="#contact" class="hover:text-gold-light transition-colors duration-300 hover-divine">Oraculum</a>
+        </div>
+    </nav>
+
+    <!-- HERO: THE DIVINE ENCOUNTER -->
+    <section class="h-screen relative flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- Darker, Higher Contrast Image -->
+            <img src="divine.png" alt="Divine Statue" class="w-full h-full object-cover opacity-60 animate-[scale_20s_ease-in-out_infinite_alternate]" style="animation-name: slowZoom; animation-duration: 30s;">
+             <div class="absolute inset-0 bg-gradient-to-t from-void via-void/50 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 text-center flex flex-col items-center px-4">
+            <div class="w-[1px] h-24 bg-gradient-to-b from-transparent via-gold-light to-transparent mb-8 animate-pulse-slow"></div>
+            
+            <h1 class="font-sacred text-5xl md:text-8xl lg:text-9xl mb-6 leading-tight tracking-tight text-white mix-blend-overlay opacity-0 animate-slide-up" style="animation-delay: 0.5s;">
+                PERFEITAMENTE<br>
+                <span class="text-gold italic font-elegant">DIVINO</span>
+            </h1>
+
+            <p class="font-prose text-xl md:text-2xl text-gray-300 max-w-2xl mt-8 italic opacity-0 animate-slide-up" style="animation-delay: 1s;">
+                "A mediocridade é o pecado. A perfeição é a redenção.<br>
+                Nós codificamos milagres digitais."
+            </p>
+
+            <div class="mt-16 opacity-0 animate-slide-up" style="animation-delay: 1.5s;">
+                <a href="#contact" class="border border-gold-dark/50 px-12 py-4 font-tech text-xs tracking-[0.4em] text-gold-light hover:bg-gold-light hover:text-void transition-all duration-700 hover-divine uppercase">
+                    Inicie a Ascensão
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY: THE GOLDEN LOGIC -->
+    <section id="philosophy" class="py-32 bg-void relative">
+    <!-- Geometric Lines -->
+    <div class="absolute top-0 left-1/2 w-[1px] h-full bg-gold-dark/10 transform -translate-x-1/2"></div>
+    <div class="absolute top-1/2 left-0 w-full h-[1px] bg-gold-dark/10 transform -translate-y-1/2"></div>
+
+    <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-24 items-center relative z-10">
+        <!-- Texto -->
+        <div class="reveal-on-scroll animate-slide-up" style="opacity: 1;">
+            <span class="font-tech text-gold-dark text-xs tracking-[0.4em] uppercase block mb-6">Princípio I</span>
+            <h2 class="font-sacred text-5xl md:text-6xl text-white mb-8 leading-none">
+                DEUS EX<br><span class="text-gold">MACHINA</span>
+            </h2>
+            <div class="w-12 h-[2px] bg-gold-mid mb-8"></div>
+            <p class="font-prose text-2xl text-gray-400 leading-relaxed text-justify">
+                A beleza matemática é a única verdade. Nossos algoritmos não são escritos; são descobertos, como as leis da física. Utilizamos a <span class="text-white italic">Proporção Áurea (φ)</span> para garantir que cada pixel ressoe com a harmonia universal. Seu site não será apenas visitado; será reverenciado.
+            </p>
+            <div class="mt-12 flex gap-8 font-sacred text-gold-light/50 text-4xl">
+                <span>φ</span>
+                <span>π</span>
+                <span>∞</span>
+            </div>
+        </div>
+
+        <!-- Imagem com moldura sofisticada -->
+        <div class="flex items-center justify-center w-full">
+            <div class="relative border border-gold-dark/50 rounded-3xl shadow-2xl p-4">
+                <img src="geometry.png" alt="Geometry" class="max-w-full h-auto object-contain rounded-2xl">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- THE TRINITY (SERVICES) -->
+    <section id="services" class="py-32 bg-obsidian border-y border-white/5 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-24 reveal-on-scroll animate-slide-up" style="opacity: 1;">
+                <span class="material-symbols-outlined text-4xl text-gold-light mb-4 font-thin">all_inclusive</span>
+                <h2 class="font-sacred text-5xl text-white">A TRINDADE</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-white/10">
+                <!-- I -->
+                <div class="p-12 group hover:bg-white/5 transition-colors duration-700 relative reveal-on-scroll animate-slide-up" style="opacity: 1;">
+                    <span class="font-sacred text-6xl text-white/10 absolute top-4 right-8 group-hover:text-gold-light/20 transition-colors">I</span>
+                    <h3 class="font-elegant text-3xl text-gold-light mb-6">LOGOS</h3>
+                    <p class="font-tech text-xs tracking-widest text-gray-500 uppercase mb-4">Engenharia Impecável</p>
+                    <p class="font-prose text-xl text-gray-400">
+                        Código puro, sem redundâncias. Arquitetura robusta construída para durar eras. O backend é o templo invisível.
+                    </p>
+                </div>
+                <!-- II -->
+                <div class="p-12 group hover:bg-white/5 transition-colors duration-700 relative reveal-on-scroll animate-slide-up" style="transition-delay: 0.2s; opacity: 1;">
+                    <span class="font-sacred text-6xl text-white/10 absolute top-4 right-8 group-hover:text-gold-light/20 transition-colors">II</span>
+                    <h3 class="font-elegant text-3xl text-gold-light mb-6">PATHOS</h3>
+                    <p class="font-tech text-xs tracking-widest text-gray-500 uppercase mb-4">Design Sensorial</p>
+                    <p class="font-prose text-xl text-gray-400">
+                        Interfaces que provocam desejo. Animações que respiram. O design não é visto, é sentido na alma.
+                    </p>
+                </div>
+                <!-- III -->
+                <div class="p-12 group hover:bg-white/5 transition-colors duration-700 relative reveal-on-scroll animate-slide-up" style="transition-delay: 0.4s; opacity: 1;">
+                    <span class="font-sacred text-6xl text-white/10 absolute top-4 right-8 group-hover:text-gold-light/20 transition-colors">III</span>
+                    <h3 class="font-elegant text-3xl text-gold-light mb-6">ETHOS</h3>
+                    <p class="font-tech text-xs tracking-widest text-gray-500 uppercase mb-4">Autoridade Absoluta</p>
+                    <p class="font-prose text-xl text-gray-400">
+                        Posicionamento de marca que intimida a concorrência. Elevamos seu status de "empresa" para "lenda".
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MASTERPIECES (PORTFOLIO) -->
+    <section class="py-40 bg-void relative">
+        <div class="container mx-auto px-6">
+            <!-- Project 1 -->
+            <div class="flex flex-col md:flex-row gap-20 items-center mb-40 reveal-on-scroll group animate-slide-up" style="opacity: 1;">
+                <div class="w-full md:w-3/5 relative">
+                    <div class="absolute inset-0 bg-gold-light/10 transform translate-x-4 translate-y-4 transition-transform duration-700 group-hover:translate-x-6 group-hover:translate-y-6"></div>
+                    <div class="relative overflow-hidden aspect-video border border-white/10">
+                        <img style="" src="fintech.png" alt="Fintech" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 text-left">
+                    <span class="font-tech text-gold-dark text-xs tracking-[0.3em] uppercase">Private Banking</span>
+                    <h3 class="font-sacred text-5xl text-white mt-4 mb-6">OBSIDIAN BANK</h3>
+                    <p class="font-prose text-xl text-gray-400 mb-8">
+                        O silêncio do luxo. Uma interface bancária onde o espaço negativo vale mais que o saldo.
+                    </p>
+                    <a href="#" class="text-white border-b border-gold-mid pb-1 font-elegant hover:text-gold-light hover:border-white transition-colors hover-divine">VER OBRA</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="flex flex-col md:flex-row-reverse gap-20 items-center reveal-on-scroll group animate-slide-up" style="opacity: 1;">
+                <div class="w-full md:w-3/5 relative">
+                    <div class="absolute inset-0 bg-gold-light/10 transform -translate-x-4 translate-y-4 transition-transform duration-700 group-hover:-translate-x-6 group-hover:translate-y-6"></div>
+                    <div class="relative overflow-hidden aspect-video border border-white/10">
+                        <img style="" src="fashion.png" alt="Fashion" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 text-right">
+                    <span class="font-tech text-gold-dark text-xs tracking-[0.3em] uppercase">Alta Costura</span>
+                    <h3 class="font-sacred text-5xl text-white mt-4 mb-6">NOIR COUTURE</h3>
+                    <p class="font-prose text-xl text-gray-400 mb-8">
+                        E-commerce? Não. Uma galeria de arte vestível. A conversão é uma consequência da sedução.
+                    </p>
+                    <a href="#" class="text-white border-b border-gold-mid pb-1 font-elegant hover:text-gold-light hover:border-white transition-colors hover-divine">VER OBRA</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-40 bg-void relative overflow-hidden" id="feedbacks">
+    <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, rgba(196, 152, 69, 0.3) 1px, transparent 0); background-size: 50px 50px;"></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-32 reveal-on-scroll">
+            <span class="font-tech text-gold-dark text-xs tracking-[0.3em] uppercase block mb-4">Testemunhos Sagrados</span>
+            <h2 class="font-sacred text-5xl md:text-6xl text-white">VOX VERITAS</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pt-10">
+            <div class="group relative p-10 border border-gold-dark/20 bg-obsidian/50 backdrop-blur-sm hover:border-gold-mid/50 transition-all duration-700 hover:-translate-y-2 reveal-on-scroll hover-divine">
+                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                    <div class="w-20 h-20 rounded-full p-1 border border-gold-mid/30 bg-void relative overflow-hidden">
+                        <img alt="Julian Vance" class="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="pessoa1.png" style="">
+                    </div>
+                </div>
+                <div class="mt-10 text-center">
+                    <span class="font-sacred text-4xl text-gold-dark block mb-6">"</span>
+                    <p class="font-prose text-xl text-gray-300 italic mb-8 leading-relaxed">
+                        A Aeterna não construiu um site, ergueu um monumento. Nossa marca agora é imortal no éter digital.
+                    </p>
+                    <div class="border-t border-white/5 pt-6">
+                        <h4 class="font-sacred text-gold-light text-lg">JULIAN VANCE</h4>
+                        <p class="font-tech text-[10px] tracking-[0.2em] text-gray-500 uppercase mt-1">Imperator, Apex Luxury</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative p-10 border border-gold-dark/20 bg-obsidian/50 backdrop-blur-sm hover:border-gold-mid/50 transition-all duration-700 hover:-translate-y-2 reveal-on-scroll hover-divine" style="transition-delay: 0.2s;">
+                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                    <div class="w-20 h-20 rounded-full p-1 border border-gold-mid/30 bg-void relative overflow-hidden">
+                        <img alt="Elena Rostova" class="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="pessoa2.png" style="">
+                    </div>
+                </div>
+                <div class="mt-10 text-center">
+                    <span class="font-sacred text-4xl text-gold-dark block mb-6">"</span>
+                    <p class="font-prose text-xl text-gray-300 italic mb-8 leading-relaxed">
+                        Perfeição matemática. Onde outros viram código, eles viram arte sacra. Nossas conversões transcendem a lógica humana.
+                    </p>
+                    <div class="border-t border-white/5 pt-6">
+                        <h4 class="font-sacred text-gold-light text-lg">ELENA ROSTOVA</h4>
+                        <p class="font-tech text-[10px] tracking-[0.2em] text-gray-500 uppercase mt-1">Oracle, Quantum Art</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative p-10 border border-gold-dark/20 bg-obsidian/50 backdrop-blur-sm hover:border-gold-mid/50 transition-all duration-700 hover:-translate-y-2 reveal-on-scroll hover-divine" style="transition-delay: 0.4s;">
+                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                    <div class="w-20 h-20 rounded-full p-1 border border-gold-mid/30 bg-void relative overflow-hidden">
+                        <img alt="Marcus Sterling" class="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="pessoa3.png" style="">
+                    </div>
+                </div>
+                <div class="mt-10 text-center">
+                    <span class="font-sacred text-4xl text-gold-dark block mb-6">"</span>
+                    <p class="font-prose text-xl text-gray-300 italic mb-8 leading-relaxed">
+                        Eles não entregam o que você quer. Eles entregam o que você nem sabia que precisava para atingir a divindade.
+                    </p>
+                    <div class="border-t border-white/5 pt-6">
+                        <h4 class="font-sacred text-gold-light text-lg">MARCUS STERLING</h4>
+                        <p class="font-tech text-[10px] tracking-[0.2em] text-gray-500 uppercase mt-1">Architect, Sovereign</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- TESTIMONIAL: THE GOSPEL -->
+   <section class="py-32 bg-obsidian flex items-center justify-center border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-4xl text-center reveal-on-scroll animate-slide-up" style="opacity: 1;">
+            
+            <!-- Abre aspas decorativa -->
+            <span class="font-sacred text-6xl text-gold-dark block mb-6">"</span>
+            
+            <!-- Frase poética e impactante, menor -->
+            <p class="font-elegant text-2xl md:text-3xl text-white leading-relaxed mb-10">
+                Na Aeterna, transformamos o efêmero em eterno. Cada pixel é poesia, cada clique, transcendência.
+            </p>
+            
+            <!-- Linha separadora -->
+            <div class="w-16 h-[1px] bg-gold-mid mx-auto mb-6"></div>
+            
+            <!-- Autor / CEO -->
+            <p class="font-tech text-xs tracking-[0.4em] text-gray-500 uppercase">
+                Eduardo Gabriel, Fundador da Aeterna
+            </p>
+        </div>
+    </section>
+
+
+    <!-- ORACULUM (CONTACT) -->
+   <section id="contact" class="min-h-screen relative flex items-center justify-center bg-void overflow-hidden py-32 border-t border-white/5">
+    
+    <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(142,110,48,0.12)_0%,_transparent_75%)]"></div>
+        
+        <div class="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-gold-dark/20 to-transparent opacity-50"></div>
+        <div class="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-gold-dark/20 to-transparent opacity-50"></div>
+        
+        <div class="absolute -bottom-10 -left-10 mix-blend-screen opacity-20 w-1/3 lg:w-1/4">
+            <img src="touch.png" alt="Divine Touch" class="w-full h-auto">
+        </div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-6 reveal-on-scroll">
+        <div class="relative bg-obsidian/40 backdrop-blur-3xl border border-white/5 p-8 md:p-16 lg:p-24 shadow-[0_0_100px_rgba(0,0,0,0.9)]">
+            
+            <div class="absolute top-0 left-0 w-16 h-16 border-t border-l border-gold-mid/30"></div>
+            <div class="absolute top-0 right-0 w-16 h-16 border-t border-r border-gold-mid/30"></div>
+            <div class="absolute bottom-0 left-0 w-16 h-16 border-b border-l border-gold-mid/30"></div>
+            <div class="absolute bottom-0 right-0 w-16 h-16 border-b border-r border-gold-mid/30"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+                
+                <div class="lg:col-span-5 flex flex-col justify-center text-left border-b lg:border-b-0 border-white/10 pb-16 lg:pb-0 lg:pr-24 min-w-fit shrink-0">
+                    <span class="font-tech text-gold-dark text-[9px] tracking-[0.6em] uppercase block mb-8 opacity-70">Oraculum Sacrum</span>
+                    
+                    <h2 class="font-sacred text-5xl md:text-6xl lg:text-[5.5rem] text-white mb-10 leading-tight tracking-tighter whitespace-nowrap">
+                        <span class="block leading-[0.8]">A HORA DA</span>
+                        <span class="text-gold block mt-4 py-2 leading-none filter drop-shadow-[0_0_20px_rgba(142,110,48,0.4)]">ASCENSÃO</span>
+                    </h2>
+                    
+                    <p class="font-prose text-xl md:text-2xl text-gray-400 italic leading-relaxed max-w-md">
+                        Não buscamos clientes, buscamos legados. Se sua marca está pronta para a imortalidade, escreva-nos.
+                    </p>
+                    
+                    <div class="mt-20 space-y-8">
+                        <div class="flex items-center gap-8 group cursor-pointer">
+                            <span class="w-12 h-px bg-gold-dark group-hover:w-20 transition-all duration-1000"></span>
+                            <span class="font-tech text-[10px] text-gray-500 tracking-[0.4em] uppercase group-hover:text-gold-light transition-colors">contato@aeterna.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 flex flex-col justify-center w-full">
+                    <form class="space-y-14 lg:border-b-0 lg:border-l border-white/10 pl-4 lg:pl-10">
+                        <div class="relative group">
+                            <input type="text" id="name" required
+                                class="peer w-full bg-transparent border-b border-white/10 py-5 font-elegant text-2xl text-white placeholder-transparent focus:outline-none focus:border-gold-light transition-all duration-700 hover-divine">
+                            <label for="name" 
+                                class="absolute left-0 -top-6 font-tech text-[10px] tracking-widest text-gold-dark uppercase transition-all duration-500
+                                peer-placeholder-shown:text-xl peer-placeholder-shown:top-5 peer-placeholder-shown:text-gray-600
+                                peer-focus:-top-6 peer-focus:text-gold-light peer-focus:text-[10px]">
+                                Nomen // Nome
+                            </label>
+                        </div>
+
+                        <div class="relative group">
+                            <input type="email" id="email" required
+                                class="peer w-full bg-transparent border-b border-white/10 py-5 font-elegant text-2xl text-white placeholder-transparent focus:outline-none focus:border-gold-light transition-all duration-700 hover-divine">
+                            <label for="email" 
+                                class="absolute left-0 -top-6 font-tech text-[10px] tracking-widest text-gold-dark uppercase transition-all duration-500
+                                peer-placeholder-shown:text-xl peer-placeholder-shown:top-5 peer-placeholder-shown:text-gray-600
+                                peer-focus:-top-6 peer-focus:text-gold-light peer-focus:text-[10px]">
+                                Epistola // E-mail
+                            </label>
+                        </div>
+
+                        <div class="relative group">
+                            <textarea id="message" rows="1" required
+                                class="peer w-full bg-transparent border-b border-white/10 py-5 font-prose text-2xl text-white placeholder-transparent focus:outline-none focus:border-gold-light transition-all duration-700 hover-divine resize-none"></textarea>
+                            <label for="message" 
+                                class="absolute left-0 -top-6 font-tech text-[10px] tracking-widest text-gold-dark uppercase transition-all duration-500
+                                peer-placeholder-shown:text-xl peer-placeholder-shown:top-5 peer-placeholder-shown:text-gray-600
+                                peer-focus:-top-6 peer-focus:text-gold-light peer-focus:text-[10px]">
+                                Intentio // Mensagem
+                            </label>
+                        </div>
+
+                        <div class="pt-10">
+                            <button type="submit" class="group relative w-full py-8 overflow-hidden border border-gold-dark/30 bg-gold-dark/5 hover-divine transition-all duration-700">
+                                <span class="absolute inset-0 w-full h-full bg-gold-light transform translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-in-out"></span>
+                                <span class="relative z-10 font-tech text-[12px] tracking-[0.8em] text-gold-light group-hover:text-void transition-colors uppercase font-bold">
+                                    Consumar Missiva Sacra
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 flex flex-col items-center gap-8 opacity-40">
+            <span class="font-sacred text-xs tracking-[1rem] text-gold-mid uppercase">Construa seu Legado</span>
+            <div class="w-[1px] h-24 bg-gradient-to-b from-gold-mid via-gold-mid/50 to-transparent"></div>
+        </div>
+    </div>
+</section>
+
+</section>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-void border-t border-white/5 py-12 text-center">
+        <span class="font-sacred text-3xl text-white/20 block mb-8">Æ</span>
+        <div class="flex justify-center gap-12 font-tech text-[10px] tracking-[0.3em] text-gray-600 uppercase mb-8">
+            <a href="#" class="hover:text-gold-light transition-colors hover-divine">Instagram</a>
+            <a href="#" class="hover:text-gold-light transition-colors hover-divine">LinkedIn</a>
+        </div>
+        <p class="font-prose text-gray-700 text-sm italic">© 2026 — A PERFEIÇÃO ESCAPA DO CONTROLE. BEM-VINDO AO ETERNO.</p>
+    </footer>
+
+    <script>
+        // CURSOR LOGIC
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorCircle = document.getElementById('cursor-circle');
+
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Circle follows with slight delay/smoothing
+            cursorCircle.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // HOVER EFFECTS
+        document.querySelectorAll('.hover-divine').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorCircle.style.width = '80px';
+                cursorCircle.style.height = '80px';
+                cursorCircle.style.backgroundColor = 'rgba(249, 226, 156, 0.05)';
+                cursorCircle.style.borderColor = '#F9E29C';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorCircle.style.width = '50px';
+                cursorCircle.style.height = '50px';
+                cursorCircle.style.backgroundColor = 'transparent';
+                cursorCircle.style.borderColor = 'rgba(249, 226, 156, 0.5)';
+            });
+        });
+
+        const flashlight = document.getElementById('divine-flashlight');
+        const textarea = document.getElementById('message');
+textarea.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+});
+
+window.addEventListener('mousemove', (e) => {
+    const posX = e.clientX;
+    const posY = e.clientY;
+
+    // Atualiza a lanterna dourada
+    flashlight.style.setProperty('--mouse-x', posX + 'px');
+    flashlight.style.setProperty('--mouse-y', posY + 'px');
+
+    // Lógica do cursor existente...
+    cursorDot.style.left = `${posX}px`;
+    cursorDot.style.top = `${posY}px`;
+
+    cursorCircle.animate({
+        left: `${posX}px`,
+        top: `${posY}px`
+    }, { duration: 500, fill: "forwards" });
+});
+
+        // PRELOADER
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 1000);
+            }, 1500);
+        });
+
+        // SCROLL REVEAL
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-slide-up');
+                    entry.target.style.opacity = '1';
+                    
+                    const img = entry.target.querySelector('.reveal-image');
+                    if (img) img.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+
+
+</body></html>
